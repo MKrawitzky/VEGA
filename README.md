@@ -80,7 +80,7 @@ BUILD constructs a spectral library from three complementary sources, then merge
 
 | Mode | Input | Best for |
 |------|-------|---------|
-| **Empirical** | Bruker `.d` DDA runs + FASTA | Highest fidelity — real observed spectra |
+| **Empirical** | `.d` DDA runs + FASTA | Highest fidelity — real observed spectra |
 | **Predicted** | FASTA only | No raw files needed; fast; Koina-powered |
 | **Hybrid** | `.d` runs + FASTA | Fill empirical gaps with predictions — maximum coverage |
 | **De novo** | `.d` runs (Casanovo) | Discover peptides outside the FASTA |
@@ -263,7 +263,7 @@ vega/
 - Python 3.9+
 - `numpy`, `scipy`, `polars`
 - `requests` (Koina API)
-- Bruker TimsData SDK (for empirical / de novo BUILD modes)
+- TimsData SDK (for empirical / de novo BUILD modes)
 - Optional: `casanovo` (de novo BUILD mode)
 - Optional: Koina endpoint (predicted / hybrid / REBUILD modes)
 
@@ -297,7 +297,7 @@ Contact: bsphinney@ucdavis.edu
 
 ## Author
 
-**Michael Krawitzky** — The Peptide Wizard · Bruker Daltonics  
+**Michael Krawitzky** — The Peptide Wizard  
 [github.com/MKrawitzky](https://github.com/MKrawitzky)
 
 ---
