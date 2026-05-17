@@ -149,13 +149,16 @@ REBUILD takes any existing spectral library (regardless of origin) and applies a
 
 ### One-Click Presets
 
-| Preset | Filter bad | Singletons | Fill CCS | Apply CCS | Re-predict | Use case |
-|--------|-----------|-----------|---------|----------|-----------|---------|
-| **Max IDs** | ✅ | ❌ | ✅ | ✅ | ❌ | Maximise recoverable entries |
-| **High Quality** | ✅ | ✅ | ✅ | ✅ | ❌ | Remove noise, fill gaps |
-| **CCS Native** | ❌ | ❌ | ✅ | ✅ | ❌ | Add 1/K₀ to a 2D library |
-| **Discovery** | ❌ | ❌ | ✅ | ✅ | ❌ | Preserve every entry, add CCS |
-| **Full Refresh** | ✅ | ❌ | ✅ | ✅ | ✅ | Complete re-prediction |
+| Preset | Filters bad¹ | Strict quality² | Fill 1/K₀ | Apply CCS | Re-predict | Use case |
+|--------|-------------|-----------------|----------|----------|-----------|---------|
+| **⚡ Max IDs** | ✅ | ❌ | ✅ | ✅ | ❌ | Maximise recoverable entries |
+| **◈ High Quality** | ✅ | ✅ | ✅ | ✅ | ❌ | Remove noise, maximise confidence |
+| **K₀ CCS Native** | ❌ | ❌ | ✅ | ✅ | ❌ | Add 1/K₀ to a 2D library |
+| **✦ Discovery** | ❌ | ❌ | ✅ | ✅ | ❌ | Preserve every entry, add CCS |
+| **↺ Full Refresh** | ✅ | ❌ | ✅ | ✅ | ✅ | Complete re-prediction from Koina |
+
+¹ **Filters bad** — removes entries with 0–2 peaks (empty / too-few-peaks) and chimeric near-duplicates detected by spectral fingerprint matching.  
+² **Strict quality** — additionally removes marginal 3–4 peak entries. For `.blib` / `.msp` libraries with observation copy-count data, also removes singletons (peptides seen only once across MS runs).
 
 ### Safe Output — Never Overwrites
 
