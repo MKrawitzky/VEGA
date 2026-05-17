@@ -25,18 +25,19 @@
 
 ## What is VEGA?
 
-VEGA is a **three-mode spectral library engine** that covers the full library lifecycle — from validation and health assessment through creation and continuous optimisation. It is the only tool in the ZIGGY ecosystem that treats spectral libraries as living artifacts: inspect them, build them from scratch, and iteratively improve them without ever touching the original file.
+VEGA is a **four-mode spectral library engine** that covers the full library lifecycle — from validation and health assessment through creation, continuous optimisation, and head-to-head benchmarking. It is the only tool in the ZIGGY ecosystem that treats spectral libraries as living artifacts: inspect them, build them from scratch, improve them, and compare them side by side against real data.
 
 > *"The 1. Outside album was Bowie rebuilding himself — taking everything apart and putting it back together as something better. VEGA does the same for your spectral libraries."*
 
 ---
 
-## Three Modes
+## Four Modes
 
 ```
 PROBE   →  Validate an existing library — flags, health score, per-entry diagnostics
 BUILD   →  Create a new library from raw .d files, FASTA, or de novo sequences
 REBUILD →  Optimise an existing library — filter, fill gaps, re-score, re-predict
+BENCH   →  Search one run with every library via DIA-NN — compare ID counts side by side
 ```
 
 ---
@@ -171,6 +172,38 @@ my_library_20250516_143022.tsv  →  (rebuilt output)
 
 ---
 
+## BENCH — Library Benchmarking
+
+BENCH answers the most practical question in DIA proteomics: **which spectral library gives the most identifications on my data?**
+
+The engine is fixed — always **DIA-NN**. The only variable is the spectral library. BENCH searches one diaPASEF run against every library in your collection sequentially and presents the results side by side.
+
+```
+Input: one diaPASEF .d run  +  all libraries in your library folder
+         │
+         ├─ Library A → DIA-NN search → n_proteins / n_peptides / n_PSMs
+         ├─ Library B → DIA-NN search → n_proteins / n_peptides / n_PSMs
+         ├─ Library C → DIA-NN search → n_proteins / n_peptides / n_PSMs
+         │   …
+         └─ Results table: ranked by PSMs, with vs-best % bar
+```
+
+### Output table
+
+| Column | Description |
+|--------|-------------|
+| Library | Name and format of the spectral library |
+| Health | PROBE health score (0–100) if previously validated |
+| Precursors | Entry count in the library |
+| Proteins | Unique protein groups at 1% FDR |
+| Peptides | Unique peptide sequences at 1% FDR |
+| PSMs | Total precursor matches at 1% FDR |
+| vs Best | PSM count as % of the best-performing library |
+
+Results are cached between sessions — re-run a single library or wipe and start fresh.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -225,7 +258,7 @@ print(f"CCS filled: {rebuilt.ccs_filled}  |  MS2 re-predicted: {rebuilt.ms2_repr
 
 ### Via ZIGGY dashboard
 
-VEGA is fully integrated into the [ZIGGY](https://github.com/MKrawitzky/Ziggy) dashboard — use the **VEGA** tab to PROBE, BUILD, or REBUILD any library without writing a line of code.
+VEGA is fully integrated into the [ZIGGY](https://github.com/MKrawitzky/Ziggy) dashboard — use the **VEGA** tab to PROBE, BUILD, REBUILD, or BENCH any library without writing a line of code.
 
 ---
 
