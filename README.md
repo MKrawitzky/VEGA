@@ -304,16 +304,18 @@ vega/
 
 ## Part of the ZIGGY Ecosystem
 
-VEGA is one of six in-house engines inside [ZIGGY](https://github.com/MKrawitzky/Ziggy):
+VEGA is one of seven in-house engines inside [ZIGGY](https://github.com/MKrawitzky/Ziggy):
 
 | Engine | Mode | Approach |
 |--------|------|----------|
-| **VEGA** | Library | PROBE · BUILD · REBUILD · Koina-powered predictions |
+| **VEGA** | Library | PROBE · BUILD · REBUILD · BENCH · Koina-powered predictions |
 | BOWIE | DDA + DIA | 4D database search · presets · open search |
 | GauDIA | DIA | Fragment index + cosine + BH-FDR |
 | Copperfield | DIA | GauDIA + CCS gate + Kálmán RT + Percolator |
 | PHANTOM | DIA | Particle filter + EKF + GRU + EB-FDR |
 | Goya | DDA | SGD logistic · 8 features · BH-FDR |
+| Zyna | DIA post | Chimeric deconvolution |
+| Silent Heroes | Advisor | Valley-bounded FWHM · gradient-aware DIA windows · Help Me Michael |
 
 ---
 
